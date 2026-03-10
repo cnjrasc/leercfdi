@@ -1,0 +1,205 @@
+{% load static %}
+{% load l10n %}
+{% load custom_filters %}
+<!doctype html>
+<html lang="es-mx">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> {% block titulo  %} PEQUE CONTA --CFDI's-- {% endblock %} </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="{% static 'images/icon-192.png' %}">
+
+{% load static %}
+
+<link rel="manifest" href="{% static 'manifest.json' %}">
+<meta name="theme-color" content="#0d6efd">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script>
+
+  if ("serviceWorker" in navigator) {
+  
+  navigator.serviceWorker.register("{% static 'service-worker.js' %}")
+  
+  .then(function(reg){
+  
+  console.log("Service Worker registrado", reg);
+  
+  });
+  
+  }
+  
+  </script>
+
+ <!-- Google Font: Source Sans Pro -->
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+ <!-- Font Awesome Icons -->
+ <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+ <!-- Theme style -->
+ <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+
+<!--Datatable-->
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link href="{% static 'cfdi/static/DataTables/datatables.min.css' %}" rel="stylesheet">
+    <script src="{% static 'cfdi/static/DataTables/datatables.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'cfdi/static/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'cfdi/static/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}">
+    <script src="{% static 'cfdi/static/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'cfdi/static/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'cfdi/static/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'cfdi/static/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+<!-- otras etiquetas head -->
+    <link href="{% static 'select2-4-0-13/css/select2.min.css' %}" rel="stylesheet" />
+    <script src="{% static 'select2-4-0-13js/select2.min.js' %}"></script>
+    <script> $(function() { $("#id_fecha_de_nacimiento").datepicker({ dateFormat: 'yy-mm-dd' }); }); </script>
+    <script> $(function() { $("#id_fecha_de_ingreso").datepicker({ dateFormat: 'yy-mm-dd' }); }); </script>
+ {% block extra_css %}
+  {% endblock extra_css %} 
+
+</head>
+
+<body sytle="heigth: 2102px; min-height: 2102px;">
+  <div class="root" sytle="heigth: 2102px; min-height: 2102px;">
+    <div class="content">
+      <div>
+          <div class="row">
+              <div class="col-md-12">
+                {% block body %}
+                  <div class="col-md-12 prueba">
+                      <div class="card bg-primary">
+                          <div class="card-body">
+                              <blockquote class="blockquote mb-0 text-light text-center">
+                                  <h2 class="brand-text font-weight-light">PEQUE CONTA --CFDI's--</h2>
+                                  <div></div>
+                                  <p></p>
+                                  <h3 class="brand-text font-weight-light">El software especialmente creado para control de CFDI's del SAT</h3>
+                              </blockquote>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+      </div>
+  </div>
+<!-- Left Panel -->
+{% block imagen  %}
+<header class="masthead" style="background-image: url('{% static '/img/cnjra.png'%}')">
+{% endblock imagen  %}
+{% block marco_titulo %}
+<div class="overlay"></div>
+  <div class="container-xl">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h2>{% block titulo_principal %}{% endblock titulo_principal %}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock marco_titulo %}
+{% block menu %}
+<div class="card-deck">
+            <ul class="vmenu">
+              
+                <li class="active">
+                    <a href="{% url 'inicio' %}"><i class="fa fa-laptop"></i>Inicio</a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'contribuyente' %}"><i class="fa fa-search"></i>Contribuyente</a>
+                </li>
+                <li class="active">
+                  <a href="{% url 'historial_cfdis' %}"><i class="fa fa-search"></i>CFDI's</a>
+                </li>
+                <li class="active">
+                  <a href="{% url 'procesar-zip' %}"><i class="fa fa-search"></i>Procesa ZIP's</a>
+                </li>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+                <p> <br>                                                                             </p>
+
+
+              </ul>    
+</div>
+{% endblock menu %}    
+<!-- /#left-panel -->  
+  
+{% block contenido  %}
+{% endblock contenido %}
+
+ <!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static '/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'js/adminlte.min.js' %}"></script>
+{% block javascript %} 
+<script src="{% static 'select2-4-0-13js/select2.min.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="{% static 'cfdi/static/DataTables/datatables.min.css' %}" rel="stylesheet">
+<script src="{% static 'cfdi/static/DataTables/datatables.min.js' %}"></script>
+<script src="{% static 'cfdi/static/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'cfdi/static/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'cfdi/static/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'cfdi/static/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("{% static 'service-worker.js' %}")
+      .then(function(registration) {
+          console.log("Service Worker registrado con éxito:", registration);
+      })
+      .catch(function(error) {
+          console.log("Error al registrar Service Worker:", error);
+      });
+  }
+  </script>   
+
+{% endblock %} 
+{% if messages %} 
+  <div> 
+    {% for message in messages %} 
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div> 
+    {% endfor %} 
+  </div> 
+{% endif %}
+<!-- AdminLTE for demo purposes -->
+<!-- script src="{% static 'js/demo.js' %}"></script -->
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner bg-white">
+      <div class="row">
+          <div class="col-sm-6">
+              Copyright &copy; 2023 Luca Soft
+          </div>
+          <div class="col-sm-6 text-right">
+              Designed by <a href="https://lucasoft.com.mx">Luca Soft</a>
+          </div>
+      </div>
+  </div>
+</footer>
+<!-- /.site-footer -->
+</body>
+
+{% endblock body %}
+
+</html>

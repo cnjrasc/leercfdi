@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convertir CFDI a Excel</title>
+</head>
+<body>
+    <h2>Subir archivo CFDI (XML)</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Convertir a Excel</button>
+    </form>
+</body>
+</html>

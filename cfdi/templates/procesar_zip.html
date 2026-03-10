@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block titulo  %}Subir ZIP de CFDIs  
+{% endblock %}
+<!--{% block head_list %}
+    <script src="{% static 'libreria/templates/empresa/static/empresa/js/list.js' %}"></script>
+{% endblock %}-->
+{% block contenido  %}  
+    <title>Subir ZIP de CFDIs</title>
+<body>
+    <h2>Convertir ZIP de CFDIs a Excel</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Procesar ZIP</button>
+        <a name="" id="" class="btn btn-primary" href="{% url 'inicio' %}" role="button">Inicio</a>
+    </form>
+    
+</body>
+{% endblock %}

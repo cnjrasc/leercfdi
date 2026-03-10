@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block titulo  %} Lista de empresas {% endblock %}
+<!--{% block head_list %}
+    <script src="{% static 'libreria/templates/empresa/static/empresa/js/list.js' %}"></script>
+{% endblock %}-->
+{% block contenido  %}  
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'altaem' %}" role="button">Agregar Empresa</a>
+    </div>
+    <div class="col-12">
+    <div class="card-body">
+        <h4 class="card-title">Empresas</h4>
+        
+        <div class="table-responsive" >
+            <table id="data" class="table table-sm table-bordered table-primary" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRE O RAZÓN SOCIAL</th>
+                        <th scope="col">NOMBRE CORTO</th>
+                        <th scope="col">RFC</th>
+                        <th scope="col">CURP</th>
+                        <th scope="col">CALLE, NO. Y COLONIA</th>
+                        <th scope="col">CODIGO POSTAL</th>
+                        <th scope="col">ENTIDAD</th>
+                        <th scope="col">MUNICIPIO/ALCALDÍA</th>
+                        <th scope="col">ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for contribuyente in contribuyentes %}
+                    <tr>
+                        <td>{{ contribuyente.id }}</td>
+                        <td>{{ contribuyente.Nombre_Razon_Social }}</td>
+                        <td>{{ contribuyente.Nombre_Corto }}</td>
+                        <td>{{ contribuyente.RFC }}</td>
+                        <td>{{ contribuyente.CURP }}</td>
+                        <td>{{ contribuyente.Calle_No_Colonia }}</td>
+                        <td>{{ contribuyente.CODIGO_POSTAL }}</td>
+                        <td>{{ contribuyente.Entidad }}</td>
+                        <td>{{ contribuyente.Municipio_Alcaldía }}</td>
+                        
+                        <td> 
+                            <a name="" id="" class="fas fa-edit" href="{% url 'editarem' contribuyente.id %}" role="button"></a> 
+                            | 
+                            <a name="" id="" class="fas fa-trash-alt" href="{% url 'eliminarem' contribuyente.id %}" role="button"></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                 
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>    
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script type="application/javascript">
+    $(document).ready(function() {
+      $('#data').DataTable({ 
+      });
+    });
+   </script>
+    
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#data').select2({
+            dropdownParent: $('#data')
+        });
+    });
+</script> 
+{% endblock %}

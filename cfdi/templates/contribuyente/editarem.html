@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+    
+{% block titulo  %} Editar datos de la Empresa {% endblock %}
+
+{% block contenido  %}  
+
+<div class="card">
+    <div class="card-header">
+        Editar datos de la Empresa
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de la Empresa</h4>
+
+      {% include 'contribuyente/formulario.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+
+{% endblock %}

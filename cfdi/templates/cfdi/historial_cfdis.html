@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block titulo  %} Historial de CFDIs {% endblock %}
+<!--{% block head_list %}
+    <script src="{% static 'libreria/templates/empresa/static/empresa/js/list.js' %}"></script>
+{% endblock %}-->
+{% block contenido  %}  
+
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de CFDIs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            margin-bottom: 1em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        a.descargar {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a.descargar:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function filtrar() {
+            let input = document.getElementById("filtro");
+            let filtro = input.value.toLowerCase();
+            let filas = document.querySelectorAll("#tabla-cfdi tbody tr");
+
+            filas.forEach(fila => {
+                const texto = fila.innerText.toLowerCase();
+                fila.style.display = texto.includes(filtro) ? "" : "none";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>📁 Historial de archivos CFDI generados</h2>
+
+    <input type="text" id="filtro" onkeyup="filtrar()" placeholder="🔍 Buscar por nombre o fecha...">
+
+    {% if archivos %}
+        <table id="tabla-cfdi">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Tamaño (KB)</th>
+                    <th>Descargar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for archivo in archivos %}
+                <tr>
+                    <td>{{ archivo.nombre }}</td>
+                    <td>{{ archivo.fecha }}</td>
+                    <td>{{ archivo.tamano }}</td>
+                    <td>
+                    <a href="{{ archivo.url }}" class="descargar" target="_blank">🔗 Descargar</a>
+                    <a href="{% url 'eliminar_cfdi' archivo.nombre %}" onclick="return confirm('¿Estás seguro de que deseas eliminar {{ archivo.nombre }}?');" style="color: red;">🗑️ Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay archivos aún. ¡Carga tu primer ZIP de CFDIs!</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block javascript %}
+<script type="application/javascript">
+    $(document).ready(function() {
+      $('#data').DataTable({ 
+      });
+    });
+   </script>
+    
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#data').select2({
+            dropdownParent: $('#data')
+        });
+    });
+</script> 
+{% endblock %}
