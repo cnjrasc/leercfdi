@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cfdipyme-v1';
+const CACHE_NAME = 'leercfdi-v1';
 
 const urlsToCache = [
     '/',

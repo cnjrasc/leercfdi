@@ -1,6 +1,6 @@
 {
-    "name": "Leer CFDI",
-    "short_name": "CFDIPYME",
+    "name": "leercfdi",
+    "short_name": "leercfdi",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
