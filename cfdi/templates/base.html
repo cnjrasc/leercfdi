@@ -58,14 +58,13 @@ if ("serviceWorker" in navigator) {
 {% block extra_css %}{% endblock %}
 
 </head>
-
+{% block body %}
 <body sytle="heigth: 2102px; min-height: 2102px;">
   <div class="root" sytle="heigth: 2102px; min-height: 2102px;">
     <div class="content">
       <div>
           <div class="row">
               <div class="col-md-12">
-                {% block body %}
                   <div class="col-md-12 prueba">
                       <div class="card bg-primary">
                           <div class="card-body">
@@ -155,7 +154,7 @@ if ("serviceWorker" in navigator) {
 
 {% block javascript %}{% endblock %} 
 
-{% endblock %} 
+
 {% if messages %} 
   <div> 
     {% for message in messages %} 
