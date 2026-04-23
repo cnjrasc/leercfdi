@@ -3,13 +3,12 @@ name: Mantener App Despierta
 on:
   schedule:
     # Se ejecuta cada 14 minutos (Render duerme a los 15)
-    - cron: '*/14 * * * *'
+    - cron: "*/14 * * * *"
   workflow_dispatch: # Esto permite que lo pruebes manualmente desde GitHub
 
 jobs:
   ping_render:
     runs-on: ubuntu-latest
     steps:
-      - name: Enviando señal a Render
-        run: |
-          curl -s -o /dev/null -w "%{http_code}" https://leercfdi.onrender.com
+      - name: Enviando senal a Render
+        run: curl -I -s -o https://leercfdi.onrender.com
