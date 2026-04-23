@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Enviando senal a Render
-        run: curl -I -s -o https://leercfdi.onrender.com
+        run: curl -I -s https://leercfdi.onrender.com
